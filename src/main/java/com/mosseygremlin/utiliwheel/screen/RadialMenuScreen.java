@@ -22,8 +22,8 @@ public class RadialMenuScreen extends Screen {
     private boolean actionExecuted = false;
 
     private static final int INNER_RADIUS = 16;
-    private static final int OUTER_RADIUS = 60;
-    private static final int TEXT_RADIUS = 41;
+    private static final int OUTER_RADIUS = 80;
+    private static final int TEXT_RADIUS = 55;
 
     private static final float TEXT_SCALE = 0.75f;
 
@@ -256,14 +256,17 @@ public class RadialMenuScreen extends Screen {
 
             double angle = sliceSize * i;
 
+            int textRadius = TEXT_RADIUS
+                    + Math.max(0, count - 8) * 4;
+
             int textX = centerX
                     + (int) (
-                    Math.cos(angle) * TEXT_RADIUS
+                    Math.cos(angle) * textRadius
             );
 
             int textY = centerY
                     + (int) (
-                    Math.sin(angle) * TEXT_RADIUS
+                    Math.sin(angle) * textRadius
             );
 
             int textColor = i == selected
@@ -278,6 +281,41 @@ public class RadialMenuScreen extends Screen {
                     textColor
             );
         }
+    }
+
+    private List<String> wrapLabel(String text, int maxWidth) {
+
+        if (this.font.width(text) <= maxWidth) {
+            return List.of(text);
+        }
+
+        int middle = text.length() / 2;
+        int split = -1;
+
+        for (int offset = 0; offset < middle; offset++) {
+
+            int left = middle - offset;
+            int right = middle + offset;
+
+            if (left > 0 && text.charAt(left) == ' ') {
+                split = left;
+                break;
+            }
+
+            if (right < text.length() && text.charAt(right) == ' ') {
+                split = right;
+                break;
+            }
+        }
+
+        if (split == -1) {
+            return List.of(text);
+        }
+
+        return List.of(
+                text.substring(0, split),
+                text.substring(split + 1)
+        );
     }
 
     private void drawScaledCenteredString(
@@ -300,13 +338,33 @@ public class RadialMenuScreen extends Screen {
                 TEXT_SCALE
         );
 
-        graphics.drawCenteredString(
-                this.font,
-                text,
-                0,
-                0,
-                color
-        );
+        List<String> lines = wrapLabel(text, 60);
+
+        if (lines.size() == 1) {
+            graphics.drawCenteredString(
+                    this.font,
+                    lines.getFirst(),
+                    0,
+                    0,
+                    color
+            );
+        } else {
+            graphics.drawCenteredString(
+                    this.font,
+                    lines.get(0),
+                    0,
+                    -5,
+                    color
+            );
+
+            graphics.drawCenteredString(
+                    this.font,
+                    lines.get(1),
+                    0,
+                    5,
+                    color
+            );
+        }
 
         graphics.pose().popMatrix();
     }

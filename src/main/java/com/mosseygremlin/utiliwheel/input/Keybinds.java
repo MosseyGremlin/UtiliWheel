@@ -7,7 +7,7 @@ import org.lwjgl.glfw.GLFW;
 
 public class Keybinds {
 
-    public static KeyMapping radialMenuKey;
+    public static KeyMapping UtiliWheelMenuKey;
 
     public static void register() {
 
@@ -18,7 +18,7 @@ public class Keybinds {
                 )
         );
 
-        radialMenuKey = KeyBindingHelper.registerKeyBinding(
+        UtiliWheelMenuKey = KeyBindingHelper.registerKeyBinding(
                 new KeyMapping(
                         "key.radialkeys.open",
                         GLFW.GLFW_KEY_R,
