@@ -3,6 +3,18 @@
   "name": "Minecraft",
   "description": "Built-in Minecraft actions for utiliwheel",
   "actions": [
+
+    {
+      "id": "minecraft.screenshot",
+      "name": "Screenshot",
+      "description": "Take a screenshot"
+    },
+    {
+      "id": "minecraft.toggle_sneak",
+      "name": "Toggle Sneak",
+      "description": "Switch sneak between Hold and Toggle"
+    },
+
     {
       "id": "minecraft.debug.overlay",
       "name": "Debug Screen",
@@ -50,6 +62,27 @@
     }
   ],
   "menu": [
+
+    {
+      "type": "action",
+      "name": "Screenshot",
+      "description": "Take a screenshot",
+      "action": "minecraft.screenshot"
+    },
+    {
+      "type": "action",
+      "name": "Toggle Sneak",
+      "description": "Switch sneak between Hold and Toggle",
+      "action": "minecraft.toggle_sneak"
+    },
+
+    {
+      "type": "action",
+      "name": "Toggle AutoJump",
+      "description": "Toggle AutoJump Preference",
+      "action": "minecraft.toggle_auto_jump"
+    },
+
     {
       "type": "folder",
       "name": "Debug",

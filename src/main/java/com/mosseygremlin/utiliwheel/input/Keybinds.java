@@ -20,7 +20,7 @@ public class Keybinds {
 
         UtiliWheelMenuKey = KeyBindingHelper.registerKeyBinding(
                 new KeyMapping(
-                        "key.radialkeys.open",
+                        "key.UtiliWheelMenuKey.open",
                         GLFW.GLFW_KEY_R,
                         category
                 )

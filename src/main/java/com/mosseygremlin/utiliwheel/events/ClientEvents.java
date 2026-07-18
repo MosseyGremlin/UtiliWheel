@@ -4,7 +4,6 @@ import com.mojang.blaze3d.platform.InputConstants;
 import com.mosseygremlin.utiliwheel.UtiliWheel;
 import com.mosseygremlin.utiliwheel.input.Keybinds;
 import com.mosseygremlin.utiliwheel.screen.RadialMenuScreen;
-
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 
 import org.lwjgl.glfw.GLFW;
@@ -19,7 +18,7 @@ public class ClientEvents {
 
             InputConstants.Key configuredKey =
                     InputConstants.getKey(
-                            Keybinds.radialMenuKey.saveString()
+                            Keybinds.UtiliWheelMenuKey.saveString()
                     );
 
             long windowHandle = client.getWindow().handle();
