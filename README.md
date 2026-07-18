@@ -1,9 +1,21 @@
-# RadialKeys
+# UtiliWheel
 
-## Setup
+UtiliWheel is a radial menu for Minecraft that lets you organize utility actions instead of trying to remember keybinds.
 
-For setup instructions, please see the [Fabric Documentation page](https://docs.fabricmc.net/develop/getting-started/creating-a-project#setting-up) related to the IDE that you are using.
+## Current Features
 
-## License
+- Radial utility menu
+- Nested categories
+- Vanilla actions
+- Camera Mode
+- JSON-based integrations
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+## The Goal
+
+UtiliWheel is designed to become a universal utility wheel for Minecraft. Mods can expose actions, players can organize them however they want, and eventually community integration packs should make new mods work with little or no setup.
+
+## Coming Soon
+
+- Favorites
+- Drag-and-drop customization
+- More built-in integrations

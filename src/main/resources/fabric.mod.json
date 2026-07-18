@@ -1,17 +1,17 @@
 {
 	"schemaVersion": 1,
-	"id": "utiliwheel",
-	"version": "${version}",
+	"id": "UtiliWheel",
+	"version": "0.1.0",
 	"name": "utiliwheel",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A Utility mod that provides an alternative to keybinds in an intuitive and easy to use manner.",
 	"authors": [
-		"Me!"
+		"MosseyGremlin"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/MosseyGremlin/UtiliWheel",
+		"sources": "https://github.com/MosseyGremlin/UtiliWheel"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/utiliwheel/icon.png",
 	"environment": "*",
 	"entrypoints": {
