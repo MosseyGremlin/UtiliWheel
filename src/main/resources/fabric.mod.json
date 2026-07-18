@@ -16,7 +16,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"client": [
-			"com.utiliwheel.utiliwheel"
+			"com.mosseygremlin.utiliwheel.UtiliWheel"
 		]
 	},
 	"mixins": [

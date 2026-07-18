@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.mosseygremlin.utiliwheel.utiliwheel;
+import com.mosseygremlin.utiliwheel.UtiliWheel;
 import com.mosseygremlin.utiliwheel.action.ActionRegistry;
 import com.mosseygremlin.utiliwheel.menu.MenuEntry;
 
@@ -47,7 +47,7 @@ public class IntegrationLoader {
                             );
 
                 } catch (Exception exception) {
-                    utiliwheel.LOGGER.error(
+                    UtiliWheel.LOGGER.error(
                             "Could not scan integrations from mod '{}'",
                             mod.getMetadata().getId(),
                             exception
@@ -111,7 +111,7 @@ public class IntegrationLoader {
                     availableActions++;
 
                 } else {
-                    utiliwheel.LOGGER.warn(
+                    UtiliWheel.LOGGER.warn(
                             "Integration '{}' references unknown action '{}'",
                             integrationId,
                             actionId
@@ -129,7 +129,7 @@ public class IntegrationLoader {
                 );
             }
 
-            utiliwheel.LOGGER.info(
+            UtiliWheel.LOGGER.info(
                     "Loaded integration '{}' from '{}' with {}/{} available actions",
                     integrationName,
                     sourceMod.getMetadata().getId(),
@@ -138,7 +138,7 @@ public class IntegrationLoader {
             );
 
         } catch (Exception exception) {
-            utiliwheel.LOGGER.error(
+            UtiliWheel.LOGGER.error(
                     "Could not load integration file {}",
                     path,
                     exception
@@ -193,7 +193,7 @@ public class IntegrationLoader {
                         actionsById.get(actionId);
 
                 if (actionInfo == null) {
-                    utiliwheel.LOGGER.warn(
+                    UtiliWheel.LOGGER.warn(
                             "Integration '{}' menu references unavailable action '{}'",
                             integrationId,
                             actionId

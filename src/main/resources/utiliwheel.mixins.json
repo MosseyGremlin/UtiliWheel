@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.utiliwheel.mixin",
+  "package": "com.mosseygremlin.utiliwheel.mixin",
   "compatibilityLevel": "JAVA_21",
   "client": [
     "KeyboardHandlerInvoker"

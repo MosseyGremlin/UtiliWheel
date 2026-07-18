@@ -1,7 +1,7 @@
 package com.mosseygremlin.utiliwheel.events;
 
 import com.mojang.blaze3d.platform.InputConstants;
-import com.mosseygremlin.utiliwheel.utiliwheel;
+import com.mosseygremlin.utiliwheel.UtiliWheel;
 import com.mosseygremlin.utiliwheel.input.Keybinds;
 import com.mosseygremlin.utiliwheel.screen.RadialMenuScreen;
 
@@ -46,7 +46,7 @@ public class ClientEvents {
             if (radialKeyIsDown) {
 
                 if (!radialOpen && client.screen == null) {
-                    utiliwheel.LOGGER.info("OPENING RADIAL");
+                    UtiliWheel.LOGGER.info("OPENING RADIAL");
 
                     radialOpen = true;
                     client.setScreen(new RadialMenuScreen());
@@ -55,7 +55,7 @@ public class ClientEvents {
 
             } else if (radialOpen) {
 
-                utiliwheel.LOGGER.info("RADIAL: KEY RELEASED");
+                UtiliWheel.LOGGER.info("RADIAL: KEY RELEASED");
 
                 radialOpen = false;
 

@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mosseygremlin.utiliwheel.action.ActionRegistry;
 import net.fabricmc.loader.api.FabricLoader;
-import com.mosseygremlin.utiliwheel.utiliwheel;
+import com.mosseygremlin.utiliwheel.UtiliWheel;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -41,7 +41,7 @@ public class MenuConfigLoader {
 
         } catch (Exception exception) {
 
-            utiliwheel.LOGGER.error(
+            UtiliWheel.LOGGER.error(
                     "Could not load {}. Using empty user menu.",
                     MENU_FILE,
                     exception
@@ -72,7 +72,7 @@ public class MenuConfigLoader {
                 defaultMenu
         );
 
-        utiliwheel.LOGGER.info(
+        UtiliWheel.LOGGER.info(
                 "Created default menu config at {}",
                 MENU_FILE
         );
@@ -125,7 +125,7 @@ public class MenuConfigLoader {
 
                 if (ActionRegistry.get(actionId) == null) {
 
-                    utiliwheel.LOGGER.warn(
+                    UtiliWheel.LOGGER.warn(
                             "Skipping menu entry '{}' because action '{}' is not registered",
                             name,
                             actionId
