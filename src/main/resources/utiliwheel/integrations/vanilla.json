@@ -16,6 +16,12 @@
     },
 
     {
+      "id": "minecraft.toggle_auto_jump",
+      "name": "Toggle AutoJump",
+      "description": "Toggle AutoJump Preference"
+    },
+
+    {
       "id": "minecraft.debug.overlay",
       "name": "Debug Screen",
       "description": "Toggle the Minecraft debug screen"
