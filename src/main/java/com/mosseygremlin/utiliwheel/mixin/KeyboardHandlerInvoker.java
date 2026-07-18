@@ -1,4 +1,4 @@
-package com.radialkeys.mixin;
+package com.mosseygremlin.utiliwheel.mixin;
 
 import net.minecraft.client.KeyboardHandler;
 import net.minecraft.client.input.KeyEvent;
@@ -10,5 +10,5 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 public interface KeyboardHandlerInvoker {
 
     @Invoker("handleDebugKeys")
-    boolean radialkeys$handleDebugKeys(KeyEvent event);
+    boolean utiliwheel$handleDebugKeys(KeyEvent event);
 }

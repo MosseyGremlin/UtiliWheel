@@ -1,8 +1,8 @@
-package com.radialkeys.integration.vanilla;
+package com.mosseygremlin.utiliwheel.integration.vanilla;
 
-import com.radialkeys.action.Action;
-import com.radialkeys.action.ActionRegistry;
-import com.radialkeys.mixin.KeyboardHandlerInvoker;
+import com.mosseygremlin.utiliwheel.action.Action;
+import com.mosseygremlin.utiliwheel.action.ActionRegistry;
+import com.mosseygremlin.utiliwheel.mixin.KeyboardHandlerInvoker;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.input.KeyEvent;
@@ -79,8 +79,8 @@ public class VanillaActions {
         }
 
         ((KeyboardHandlerInvoker) minecraft.keyboardHandler)
-                .radialkeys$handleDebugKeys(
+                .utiliwheel$handleDebugKeys((
                         new KeyEvent(key, 0, 0)
-                );
+                ));
     }
 }

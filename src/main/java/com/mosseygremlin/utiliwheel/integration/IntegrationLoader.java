@@ -1,12 +1,12 @@
-package com.radialkeys.integration;
+package com.mosseygremlin.utiliwheel.integration;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.radialkeys.RadialKeys;
-import com.radialkeys.action.ActionRegistry;
-import com.radialkeys.menu.MenuEntry;
+import com.mosseygremlin.utiliwheel.utiliwheel;
+import com.mosseygremlin.utiliwheel.action.ActionRegistry;
+import com.mosseygremlin.utiliwheel.menu.MenuEntry;
 
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
@@ -23,7 +23,7 @@ import java.util.stream.Stream;
 public class IntegrationLoader {
 
     private static final String INTEGRATION_PATH =
-            "radialkeys/integrations";
+            "utiliwheel/integrations";
 
     private static final List<MenuEntry> MENU_ENTRIES =
             new ArrayList<>();
@@ -47,7 +47,7 @@ public class IntegrationLoader {
                             );
 
                 } catch (Exception exception) {
-                    RadialKeys.LOGGER.error(
+                    utiliwheel.LOGGER.error(
                             "Could not scan integrations from mod '{}'",
                             mod.getMetadata().getId(),
                             exception
@@ -111,7 +111,7 @@ public class IntegrationLoader {
                     availableActions++;
 
                 } else {
-                    RadialKeys.LOGGER.warn(
+                    utiliwheel.LOGGER.warn(
                             "Integration '{}' references unknown action '{}'",
                             integrationId,
                             actionId
@@ -129,7 +129,7 @@ public class IntegrationLoader {
                 );
             }
 
-            RadialKeys.LOGGER.info(
+            utiliwheel.LOGGER.info(
                     "Loaded integration '{}' from '{}' with {}/{} available actions",
                     integrationName,
                     sourceMod.getMetadata().getId(),
@@ -138,7 +138,7 @@ public class IntegrationLoader {
             );
 
         } catch (Exception exception) {
-            RadialKeys.LOGGER.error(
+            utiliwheel.LOGGER.error(
                     "Could not load integration file {}",
                     path,
                     exception
@@ -193,7 +193,7 @@ public class IntegrationLoader {
                         actionsById.get(actionId);
 
                 if (actionInfo == null) {
-                    RadialKeys.LOGGER.warn(
+                    utiliwheel.LOGGER.warn(
                             "Integration '{}' menu references unavailable action '{}'",
                             integrationId,
                             actionId

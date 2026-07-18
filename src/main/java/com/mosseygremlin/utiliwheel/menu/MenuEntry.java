@@ -1,7 +1,7 @@
-package com.radialkeys.menu;
+package com.mosseygremlin.utiliwheel.menu;
 
-import com.radialkeys.action.Action;
-import com.radialkeys.action.ActionRegistry;
+import com.mosseygremlin.utiliwheel.action.Action;
+import com.mosseygremlin.utiliwheel.action.ActionRegistry;
 
 import java.util.List;
 

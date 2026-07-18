@@ -1,6 +1,6 @@
-package com.radialkeys.menu;
+package com.mosseygremlin.utiliwheel.menu;
 
-import com.radialkeys.integration.IntegrationLoader;
+import com.mosseygremlin.utiliwheel.integration.IntegrationLoader;
 
 import java.util.ArrayList;
 import java.util.List;

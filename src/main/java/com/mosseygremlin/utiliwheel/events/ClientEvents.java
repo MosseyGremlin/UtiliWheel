@@ -1,9 +1,9 @@
-package com.radialkeys.events;
+package com.mosseygremlin.utiliwheel.events;
 
 import com.mojang.blaze3d.platform.InputConstants;
-import com.radialkeys.RadialKeys;
-import com.radialkeys.input.Keybinds;
-import com.radialkeys.screen.RadialMenuScreen;
+import com.mosseygremlin.utiliwheel.utiliwheel;
+import com.mosseygremlin.utiliwheel.input.Keybinds;
+import com.mosseygremlin.utiliwheel.screen.RadialMenuScreen;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 
@@ -46,7 +46,7 @@ public class ClientEvents {
             if (radialKeyIsDown) {
 
                 if (!radialOpen && client.screen == null) {
-                    RadialKeys.LOGGER.info("OPENING RADIAL");
+                    utiliwheel.LOGGER.info("OPENING RADIAL");
 
                     radialOpen = true;
                     client.setScreen(new RadialMenuScreen());
@@ -55,7 +55,7 @@ public class ClientEvents {
 
             } else if (radialOpen) {
 
-                RadialKeys.LOGGER.info("RADIAL: KEY RELEASED");
+                utiliwheel.LOGGER.info("RADIAL: KEY RELEASED");
 
                 radialOpen = false;
 

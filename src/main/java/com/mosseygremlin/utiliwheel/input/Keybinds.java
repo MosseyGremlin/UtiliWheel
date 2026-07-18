@@ -1,4 +1,4 @@
-package com.radialkeys.input;
+package com.mosseygremlin.utiliwheel.input;
 
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.KeyMapping;
@@ -13,7 +13,7 @@ public class Keybinds {
 
         KeyMapping.Category category = KeyMapping.Category.register(
                 Identifier.fromNamespaceAndPath(
-                        "radialkeys",
+                        "utiliwheel",
                         "main"
                 )
         );

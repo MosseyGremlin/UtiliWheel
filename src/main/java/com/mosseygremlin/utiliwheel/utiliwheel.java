@@ -1,21 +1,21 @@
-package com.radialkeys;
+package com.mosseygremlin.utiliwheel;
 
-import com.radialkeys.action.ActionRegistry;
-import com.radialkeys.events.ClientEvents;
-import com.radialkeys.input.Keybinds;
-import com.radialkeys.menu.MenuRegistry;
-import com.radialkeys.integration.IntegrationLoader;
-import com.radialkeys.integration.vanilla.VanillaActions;
+import com.mosseygremlin.utiliwheel.action.ActionRegistry;
+import com.mosseygremlin.utiliwheel.events.ClientEvents;
+import com.mosseygremlin.utiliwheel.input.Keybinds;
+import com.mosseygremlin.utiliwheel.menu.MenuRegistry;
+import com.mosseygremlin.utiliwheel.integration.IntegrationLoader;
+import com.mosseygremlin.utiliwheel.integration.vanilla.VanillaActions;
 
 import net.fabricmc.api.ClientModInitializer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class RadialKeys implements ClientModInitializer {
+public class utiliwheel implements ClientModInitializer {
 
     public static final Logger LOGGER =
-            LoggerFactory.getLogger("radialkeys");
+            LoggerFactory.getLogger("utiliwheel");
 
     @Override
     public void onInitializeClient() {

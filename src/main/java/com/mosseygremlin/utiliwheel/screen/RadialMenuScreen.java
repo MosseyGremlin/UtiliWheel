@@ -1,8 +1,8 @@
-package com.radialkeys.screen;
+package com.mosseygremlin.utiliwheel.screen;
 
-import com.radialkeys.menu.MenuEntry;
-import com.radialkeys.menu.MenuRegistry;
-import com.radialkeys.menu.MenuState;
+import com.mosseygremlin.utiliwheel.menu.MenuEntry;
+import com.mosseygremlin.utiliwheel.menu.MenuRegistry;
+import com.mosseygremlin.utiliwheel.menu.MenuState;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
