@@ -15,7 +15,9 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 public class IntegrationLoader {
@@ -77,6 +79,9 @@ public class IntegrationLoader {
             JsonArray actions =
                     root.getAsJsonArray("actions");
 
+            Map<String, IntegrationActionInfo> actionsById =
+                    new HashMap<>();
+
             int availableActions = 0;
 
             for (JsonElement element : actions) {
@@ -87,8 +92,24 @@ public class IntegrationLoader {
                 String actionId =
                         action.get("id").getAsString();
 
+                String actionName =
+                        action.get("name").getAsString();
+
+                String actionDescription =
+                        action.get("description").getAsString();
+
                 if (ActionRegistry.get(actionId) != null) {
+
+                    actionsById.put(
+                            actionId,
+                            new IntegrationActionInfo(
+                                    actionName,
+                                    actionDescription
+                            )
+                    );
+
                     availableActions++;
+
                 } else {
                     RadialKeys.LOGGER.warn(
                             "Integration '{}' references unknown action '{}'",
@@ -102,7 +123,8 @@ public class IntegrationLoader {
                 MENU_ENTRIES.addAll(
                         readMenuEntries(
                                 root.getAsJsonArray("menu"),
-                                integrationId
+                                integrationId,
+                                actionsById
                         )
                 );
             }
@@ -126,7 +148,8 @@ public class IntegrationLoader {
 
     private static List<MenuEntry> readMenuEntries(
             JsonArray entries,
-            String integrationId
+            String integrationId,
+            Map<String, IntegrationActionInfo> actionsById
     ) {
         List<MenuEntry> menuEntries = new ArrayList<>();
 
@@ -138,18 +161,19 @@ public class IntegrationLoader {
             String type =
                     entry.get("type").getAsString();
 
-            String name =
-                    entry.get("name").getAsString();
-
-            String description =
-                    entry.get("description").getAsString();
-
             if (type.equals("folder")) {
+
+                String name =
+                        entry.get("name").getAsString();
+
+                String description =
+                        entry.get("description").getAsString();
 
                 List<MenuEntry> children =
                         readMenuEntries(
                                 entry.getAsJsonArray("children"),
-                                integrationId
+                                integrationId,
+                                actionsById
                         );
 
                 menuEntries.add(
@@ -165,9 +189,12 @@ public class IntegrationLoader {
                 String actionId =
                         entry.get("action").getAsString();
 
-                if (ActionRegistry.get(actionId) == null) {
+                IntegrationActionInfo actionInfo =
+                        actionsById.get(actionId);
+
+                if (actionInfo == null) {
                     RadialKeys.LOGGER.warn(
-                            "Integration '{}' menu references unknown action '{}'",
+                            "Integration '{}' menu references unavailable action '{}'",
                             integrationId,
                             actionId
                     );
@@ -177,8 +204,8 @@ public class IntegrationLoader {
 
                 menuEntries.add(
                         new MenuEntry(
-                                name,
-                                description,
+                                actionInfo.name(),
+                                actionInfo.description(),
                                 actionId
                         )
                 );
@@ -186,5 +213,11 @@ public class IntegrationLoader {
         }
 
         return menuEntries;
+    }
+
+    private record IntegrationActionInfo(
+            String name,
+            String description
+    ) {
     }
 }

@@ -1,6 +1,5 @@
 package com.radialkeys;
 
-import com.radialkeys.action.Action;
 import com.radialkeys.action.ActionRegistry;
 import com.radialkeys.events.ClientEvents;
 import com.radialkeys.input.Keybinds;
@@ -9,8 +8,6 @@ import com.radialkeys.integration.IntegrationLoader;
 import com.radialkeys.integration.vanilla.VanillaActions;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,38 +19,6 @@ public class RadialKeys implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-
-        ActionRegistry.register(new Action(
-                "radialkeys.place_blocks",
-                "Place Blocks",
-                () -> System.out.println("Placed blocks!")
-        ));
-
-        ActionRegistry.register(new Action(
-                "radialkeys.copy_area",
-                "Copy Area",
-                () -> System.out.println("Copied area!")
-        ));
-
-        ActionRegistry.register(new Action(
-                "radialkeys.hello",
-                "Hello",
-                () -> System.out.println("Hello from RadialKeys!")
-        ));
-
-        ActionRegistry.register(new Action(
-                "minecraft.inventory",
-                "Inventory",
-                () -> {
-                    Minecraft minecraft = Minecraft.getInstance();
-
-                    if (minecraft.player != null) {
-                        minecraft.setScreen(
-                                new InventoryScreen(minecraft.player)
-                        );
-                    }
-                }
-        ));
 
         VanillaActions.register();
 

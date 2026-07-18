@@ -4,11 +4,6 @@
   "description": "Built-in Minecraft actions for RadialKeys",
   "actions": [
     {
-      "id": "minecraft.inventory",
-      "name": "Inventory",
-      "description": "Open your inventory"
-    },
-    {
       "id": "minecraft.debug.overlay",
       "name": "Debug Screen",
       "description": "Toggle the Minecraft debug screen"
@@ -60,60 +55,40 @@
       "name": "Debug",
       "description": "Minecraft debug actions",
       "children": [
-
         {
           "type": "action",
-          "name": "Debug Screen",
-          "description": "Toggle the Minecraft debug screen",
           "action": "minecraft.debug.overlay"
         },
-
         {
           "type": "action",
-          "name": "Chunk Borders",
-          "description": "Toggle chunk border rendering",
           "action": "minecraft.debug.chunk_borders"
         },
         {
           "type": "action",
-          "name": "Reload Chunks",
-          "description": "Reload visible chunks",
           "action": "minecraft.debug.reload_chunks"
         },
         {
           "type": "action",
-          "name": "Hitboxes",
-          "description": "Toggle entity hitbox rendering",
           "action": "minecraft.debug.hitboxes"
         },
         {
           "type": "action",
-          "name": "Clear Chat",
-          "description": "Clear visible chat messages",
           "action": "minecraft.debug.clear_chat"
         },
         {
           "type": "action",
-          "name": "Tooltips",
-          "description": "Toggle advanced item tooltips",
           "action": "minecraft.debug.advanced_tooltips"
         },
         {
           "type": "action",
-          "name": "Pause Focus",
-          "description": "Toggle pausing when focus is lost",
           "action": "minecraft.debug.pause_on_lost_focus"
         },
         {
           "type": "action",
-          "name": "Debug Help",
-          "description": "Show Minecraft's debug shortcut list",
           "action": "minecraft.debug.help"
         },
         {
           "type": "action",
-          "name": "Reload Resources",
-          "description": "Reload resource packs",
           "action": "minecraft.debug.reload_resources"
         }
       ]

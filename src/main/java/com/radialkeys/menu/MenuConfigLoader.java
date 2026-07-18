@@ -25,7 +25,6 @@ public class MenuConfigLoader {
     public static List<MenuEntry> load() {
 
         try {
-            createDefaultFile();
 
             try (Reader reader = Files.newBufferedReader(MENU_FILE)) {
                 JsonObject root =
@@ -58,73 +57,6 @@ public class MenuConfigLoader {
                     )
             );
         }
-    }
-
-    private static void createDefaultFile() throws IOException {
-
-        if (Files.exists(MENU_FILE)) {
-            return;
-        }
-
-        Files.createDirectories(MENU_FILE.getParent());
-
-        String defaultMenu = """
-                {
-                  "entries": [
-                    {
-                      "type": "folder",
-                      "name": "Building",
-                      "description": "Building tools",
-                      "children": [
-                        {
-                          "type": "action",
-                          "name": "Place Blocks",
-                          "description": "Test action",
-                          "action": "radialkeys.place_blocks"
-                        },
-                        {
-                          "type": "action",
-                          "name": "Copy Area",
-                          "description": "Test action",
-                          "action": "radialkeys.copy_area"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "folder",
-                      "name": "Utility",
-                      "description": "Useful things",
-                      "children": [
-                        {
-                          "type": "action",
-                          "name": "Hello",
-                          "description": "Test action",
-                          "action": "radialkeys.hello"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "folder",
-                      "name": "Settings",
-                      "description": "RadialKeys settings",
-                      "children": []
-                    },
-                    {
-                      "type": "action",
-                      "name": "Inventory",
-                      "description": "Open your inventory",
-                      "action": "minecraft.inventory"
-                    }
-                  ]
-                }
-                """;
-
-        Files.writeString(MENU_FILE, defaultMenu);
-
-        RadialKeys.LOGGER.info(
-                "Created default menu config at {}",
-                MENU_FILE
-        );
     }
 
     private static List<MenuEntry> readEntries(JsonArray entries) {
