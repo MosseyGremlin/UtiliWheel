@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.radialkeys.RadialKeys;
 import com.radialkeys.action.ActionRegistry;
+import com.radialkeys.menu.MenuEntry;
 
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
@@ -13,6 +14,8 @@ import net.fabricmc.loader.api.ModContainer;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class IntegrationLoader {
@@ -20,7 +23,12 @@ public class IntegrationLoader {
     private static final String INTEGRATION_PATH =
             "radialkeys/integrations";
 
+    private static final List<MenuEntry> MENU_ENTRIES =
+            new ArrayList<>();
+
     public static void load() {
+
+        MENU_ENTRIES.clear();
 
         for (ModContainer mod :
                 FabricLoader.getInstance().getAllMods()) {
@@ -45,6 +53,10 @@ public class IntegrationLoader {
                 }
             });
         }
+    }
+
+    public static List<MenuEntry> getMenuEntries() {
+        return List.copyOf(MENU_ENTRIES);
     }
 
     private static void loadIntegration(
@@ -86,6 +98,15 @@ public class IntegrationLoader {
                 }
             }
 
+            if (root.has("menu")) {
+                MENU_ENTRIES.addAll(
+                        readMenuEntries(
+                                root.getAsJsonArray("menu"),
+                                integrationId
+                        )
+                );
+            }
+
             RadialKeys.LOGGER.info(
                     "Loaded integration '{}' from '{}' with {}/{} available actions",
                     integrationName,
@@ -101,5 +122,69 @@ public class IntegrationLoader {
                     exception
             );
         }
+    }
+
+    private static List<MenuEntry> readMenuEntries(
+            JsonArray entries,
+            String integrationId
+    ) {
+        List<MenuEntry> menuEntries = new ArrayList<>();
+
+        for (JsonElement element : entries) {
+
+            JsonObject entry =
+                    element.getAsJsonObject();
+
+            String type =
+                    entry.get("type").getAsString();
+
+            String name =
+                    entry.get("name").getAsString();
+
+            String description =
+                    entry.get("description").getAsString();
+
+            if (type.equals("folder")) {
+
+                List<MenuEntry> children =
+                        readMenuEntries(
+                                entry.getAsJsonArray("children"),
+                                integrationId
+                        );
+
+                menuEntries.add(
+                        new MenuEntry(
+                                name,
+                                description,
+                                children
+                        )
+                );
+
+            } else if (type.equals("action")) {
+
+                String actionId =
+                        entry.get("action").getAsString();
+
+                if (ActionRegistry.get(actionId) == null) {
+                    RadialKeys.LOGGER.warn(
+                            "Integration '{}' menu references unknown action '{}'",
+                            integrationId,
+                            actionId
+                    );
+
+                    continue;
+                }
+
+                menuEntries.add(
+                        new MenuEntry(
+                                name,
+                                description,
+                                actionId
+                        )
+                );
+            }
+        }
+
+        return menuEntries;
     }
 }

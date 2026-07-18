@@ -14,6 +14,14 @@ public class VanillaActions {
     public static void register() {
 
         ActionRegistry.register(new Action(
+                "minecraft.debug.overlay",
+                "Debug Screen",
+                () -> Minecraft.getInstance()
+                        .debugEntries
+                        .toggleDebugOverlay()
+        ));
+
+        ActionRegistry.register(new Action(
                 "minecraft.debug.chunk_borders",
                 "Chunk Borders",
                 () -> runDebugAction(GLFW.GLFW_KEY_G)

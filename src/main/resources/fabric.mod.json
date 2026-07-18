@@ -22,8 +22,7 @@
 	"mixins": [
 		"radialkeys.mixins.json"
 	],
-	"depends": {
-	},
+
 	"depends": {
 		"fabricloader": ">=0.19.3",
 		"minecraft": "~1.21.11",
