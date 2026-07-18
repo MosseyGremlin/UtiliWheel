@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "UtiliWheel",
+	"id": "utiliwheel",
 	"version": "0.1.0",
 	"name": "utiliwheel",
 	"description": "A Utility mod that provides an alternative to keybinds in an intuitive and easy to use manner.",
