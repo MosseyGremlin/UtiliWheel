@@ -44,6 +44,10 @@ public class MenuEntry {
         return description;
     }
 
+    public String getActionId() {
+        return actionId;
+    }
+
     public List<MenuEntry> getChildren() {
         return children;
     }

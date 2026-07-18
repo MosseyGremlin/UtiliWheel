@@ -4,6 +4,7 @@ import com.mosseygremlin.utiliwheel.action.Action;
 import com.mosseygremlin.utiliwheel.action.ActionRegistry;
 import com.mosseygremlin.utiliwheel.mixin.KeyboardHandlerInvoker;
 import com.mosseygremlin.utiliwheel.util.DeferredActions;
+import com.mosseygremlin.utiliwheel.util.CameraMode;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.input.KeyEvent;
@@ -89,7 +90,11 @@ public class VanillaActions {
                 VanillaActions::toggleautojump
         ));
 
-
+        ActionRegistry.register(new Action(
+                "minecraft.camera_mode",
+                "Camera Mode",
+                CameraMode::toggle
+        ));
 
     }
 

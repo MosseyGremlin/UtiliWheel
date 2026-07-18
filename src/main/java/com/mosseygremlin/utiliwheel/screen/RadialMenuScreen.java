@@ -3,6 +3,7 @@ package com.mosseygremlin.utiliwheel.screen;
 import com.mosseygremlin.utiliwheel.menu.MenuEntry;
 import com.mosseygremlin.utiliwheel.menu.MenuRegistry;
 import com.mosseygremlin.utiliwheel.menu.MenuState;
+import com.mosseygremlin.utiliwheel.util.CameraMode;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -273,9 +274,16 @@ public class RadialMenuScreen extends Screen {
                     ? HOVER_TEXT_COLOR
                     : TEXT_COLOR;
 
+            String entryName = entry.getName();
+
+            if ("minecraft.camera_mode".equals(entry.getActionId())
+                    && CameraMode.isActive()) {
+                entryName = "Exit Camera";
+            }
+
             drawScaledCenteredString(
                     graphics,
-                    entry.getName(),
+                    entryName,
                     textX,
                     textY,
                     textColor

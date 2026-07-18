@@ -22,6 +22,12 @@
     },
 
     {
+    "id": "minecraft.camera_mode",
+    "name": "Camera Mode",
+    "description": "Toggle screenshot camera settings"
+    },
+
+    {
       "id": "minecraft.debug.overlay",
       "name": "Debug Screen",
       "description": "Toggle the Minecraft debug screen"
@@ -80,6 +86,13 @@
       "name": "Toggle Sneak",
       "description": "Switch sneak between Hold and Toggle",
       "action": "minecraft.toggle_sneak"
+    },
+
+    {
+      "type": "action",
+      "name": "Camera Mode",
+      "description": "Toggle screenshot camera settings",
+      "action": "minecraft.camera_mode"
     },
 
     {
