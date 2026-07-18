@@ -19,6 +19,7 @@ public class RadialMenuScreen extends Screen {
     private String currentTitle;
 
     private int selected = -1;
+    private boolean actionExecuted = false;
 
     private static final int INNER_RADIUS = 16;
     private static final int OUTER_RADIUS = 60;
@@ -44,6 +45,10 @@ public class RadialMenuScreen extends Screen {
 
     public void releaseF() {
 
+        if (actionExecuted) {
+            return;
+        }
+
         MenuEntry selectedEntry = null;
 
         if (selected >= 0) {
@@ -55,6 +60,7 @@ public class RadialMenuScreen extends Screen {
         if (selectedEntry != null
                 && selectedEntry.getAction() != null) {
 
+            actionExecuted = true;
             selectedEntry.getAction().run();
         }
     }
@@ -489,6 +495,10 @@ public class RadialMenuScreen extends Screen {
                 selected = -1;
 
             } else if (entry.getAction() != null) {
+
+                actionExecuted = true;
+
+                Minecraft.getInstance().setScreen(null);
 
                 entry.getAction().run();
             }

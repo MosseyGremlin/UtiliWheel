@@ -5,6 +5,8 @@ import com.radialkeys.action.ActionRegistry;
 import com.radialkeys.events.ClientEvents;
 import com.radialkeys.input.Keybinds;
 import com.radialkeys.menu.MenuRegistry;
+import com.radialkeys.integration.IntegrationLoader;
+import com.radialkeys.integration.vanilla.VanillaActions;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.Minecraft;
@@ -52,6 +54,10 @@ public class RadialKeys implements ClientModInitializer {
                     }
                 }
         ));
+
+        VanillaActions.register();
+
+        IntegrationLoader.load();
 
         MenuRegistry.load();
 
